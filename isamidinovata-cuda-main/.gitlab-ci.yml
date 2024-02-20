@@ -1,0 +1,14 @@
+job1:
+  image: registry.gitlab.atp-fivt.org/pd2023/cudatestbuilder:1f7e7cae
+  except:
+    - master
+  script:
+    - date
+    - cd /
+    - /run.sh ${CI_PROJECT_DIR}
+  artifacts:
+    when: always
+    reports:
+      junit: build/report.xml
+  tags: 
+    - cuda
